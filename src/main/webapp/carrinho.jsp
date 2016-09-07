@@ -16,6 +16,7 @@ and open the template in the editor.
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>BoaCompra.com</title>
+        <link rel="shortcut icon" href="resources/img/carrinho.png" >
         <link  href="resources/css/style_cadastro.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="resources/css/bootstrap.min.css" type="text/css">
         <link  href="resources/css/style_cadastro.css" rel="stylesheet" type="text/css">
@@ -74,7 +75,7 @@ and open the template in the editor.
                     <a href="index.jsp" class="btn btn-info">Comprar mais produtos</a>
                 </div>
                 <div class="col-md-2 col-md-offset-7">
-                    <a href="fecharpedido.jsp" class="btn btn-default">Finalizar pedido</a>
+                    <a href="fecharPedido.jsp" class="btn btn-default">Finalizar pedido</a>
                 </div>
             </div>
         </div>

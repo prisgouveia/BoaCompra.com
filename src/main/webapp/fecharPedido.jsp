@@ -16,6 +16,7 @@ and open the template in the editor.
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>BoaCompra.com</title>
+        <link rel="shortcut icon" href="resources/img/carrinho.png" >
         <link  href="resources/css/style_cadastro.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="resources/css/bootstrap.min.css" type="text/css">
         <link  href="resources/css/style_cadastro.css" rel="stylesheet" type="text/css">
@@ -25,7 +26,7 @@ and open the template in the editor.
     </head>
     <body>
         <header>
-             <c:choose>
+            <c:choose>
                 <c:when test="${cliente == null}">
                     <%@include file="navbar.jsp" %>
                 </c:when>
@@ -41,28 +42,49 @@ and open the template in the editor.
 
                 <h3>Endereço de entrega</h3><br>
                 <h4>${cliente.nome}</h4>
-                <h5>${cliente.endereco.rua} ${cliente.endereco.numero}</h5>
-                <h5>${cliente.endereco.cidade}</h5>
+                <c:choose> 
+                    <c:when test="${cliente.endereco.rua != null}">
+                        <h5>Rua: ${cliente.endereco.rua}</h5> 
+                        <h5>Número: ${cliente.endereco.numero}</h5> 
+                        <h5>Número: ${cliente.endereco.bairro}</h5> 
+                        <h5>Cidade: ${cliente.endereco.cidade}</h5> 
+                    </c:when>
+                    <c:when test="${cliente.endereco.rua == null}">
+                        <a href="#modalEndereco" type="button" data-toggle="modal" data-target="#modalEndereco" class="btn btn-default">Definir endereço para a entrega</a>
+                    </c:when>
+                </c:choose>
 
                 <h3>Sua compra</h3><br>
-                
-                    <div class="col-md-4">
-                        <img src="" height="80" width="80">
-                    </div>
-                    <div class="col-md-7"> 
-                        <p>${produto.quantidadeVenda}</p>
-                        <p>${produto.descricao}</p> 
-                        <p>R$ ${produto.valor}</p>
-                    </div>
-                    <h3>Total: R$ ${carrinho.valorParcial}</h3><br>
-             </div>
+
+                <table class="table">
+                    <tr class="active">
+                        <td><b>Produto</b></td>
+                        <td><b>Descrição</b></td>
+                        <td><b>Quantidade</b></td>
+                        <td><b>Preço Total</b></td>
+                    </tr>
+                    <c:forEach var="produto" items="${carrinho.produtos}">
+                        <tr>
+                            <td>
+                                <div class="col-md-4"><img src="Imagem?idProduto=${produto.id}" height="80" width="80"> </div>
+                            </td>
+                            <td><div class="col-md-5"> ${produto.descricao}</div></td>
+                            <td><div class="col-md-3"> ${produto.qtdeVenda}</div></td>
+                            <td>${produto.valorComQuantidade}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+
+                <h3>Total: R$ ${carrinho.valor}</h3><br>
+
+
+            </div>
 
             <div class="col-md-4 pagamento">
                 <h3>Dados do pagamento</h3><br><br>
-                <form class="form-horizontal" action="Controller" method="get">
-                    <input type="hidden" name="command" value="FecharCompra"/> 
-                    <label for="prestadora">Prestadora do cartão</label>
-                    <select name="prestadora" class="form-control input-sm">
+                <form class="form-horizontal" action="RealizaCompra" method="POST">
+                    <label for="empresa">Prestadora do cartão</label>
+                    <select name="empresa" class="form-control input-sm">
                         <option value="visa">Visa</option>
                         <option value="master">Master-Card</option>
                         <option value="hiper">Hiper-Card</option>
@@ -70,7 +92,7 @@ and open the template in the editor.
                     <label for="nome">Nome do titular do cartão</label>
                     <div class="form-group" id="nome">
                         <div class="col-md-12">
-                            <input type="text" name="nome" class="form-control input-sm" id="inputEmail" placeholder="Nome">
+                            <input type="text" name="titular" class="form-control input-sm" id="inputEmail" placeholder="Nome">
                         </div>
                     </div>
                     <div class="form-group">
@@ -91,5 +113,7 @@ and open the template in the editor.
                 </form>
             </div>        
         </div>
+        
+
     </body>
 </html>

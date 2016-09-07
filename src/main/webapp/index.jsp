@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>BoaCompra.com</title>
+        <link rel="shortcut icon" href="resources/img/carrinho.png" >
         <link  href="resources/css/style_cadastro.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="resources/css/bootstrap.min.css" type="text/css">
         <link  href="resources/css/style_cadastro.css" rel="stylesheet" type="text/css">
@@ -38,10 +39,15 @@
             <div class="col-md-3 menu">
                 <ul class="listaMenu">
                     <li class="opcaoMenu"><a class="linksMenu" href="#">Celulares e Telefonia Fixa</a></li>
+                    <li role="separator" class="divider"></li>
                     <li class="opcaoMenu"><a class="linksMenu" href="#">Eletrodomésticos</a></li>
+                    <li role="separator" class="divider"></li>
                     <li class="opcaoMenu"><a class="linksMenu" href="#">Games</a></li>
+                    <li role="separator" class="divider"></li>
                     <li class="opcaoMenu"><a class="linksMenu" href="#">Informática e Tablets</a></li>
+                    <li role="separator" class="divider"></li>
                     <li class="opcaoMenu"><a class="linksMenu" href="#">Livros</a></li>
+                    <li role="separator" class="divider"></li>
                     <li class="opcaoMenu"><a class="linksMenu" href="#">TVs, Áudio e Home Theater</a></li>
                 </ul>
             </div>

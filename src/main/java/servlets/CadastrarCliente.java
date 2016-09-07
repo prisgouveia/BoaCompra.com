@@ -45,9 +45,9 @@ public class CadastrarCliente extends HttpServlet {
             
             Endereco endereco = new Endereco();
             endereco.setRua(request.getParameter("rua"));
+            endereco.setNumero(request.getParameter("numero"));
             endereco.setBairro(request.getParameter("bairro"));
             endereco.setCidade(request.getParameter("cidade"));
-            endereco.setNumero(request.getParameter("numero"));
             endereco.setEstado(request.getParameter("estado"));
             
             cliente.setEndereco(endereco);
