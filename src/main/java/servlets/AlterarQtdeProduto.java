@@ -65,7 +65,7 @@ public class AlterarQtdeProduto extends HttpServlet {
             lojaService.salvarCarrinhoDeCompras(carrinhoDeCompras);
 
             request.getSession().setAttribute("carrinho", carrinhoDeCompras);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("carrinho.jsp");
             dispatcher.forward(request, response);
 
         } catch (Exception e) {

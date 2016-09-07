@@ -23,21 +23,21 @@ import redis.clients.jedis.Jedis;
  * @author NandaPC
  */
 public class LojaService {
-    
-    private Dao<Produto> daoProduto = new DaoJpa<>();
-    private DaoDocumentos daoCompra = new DaoDocumentos();
+
+    private Dao<Produto> daoJpa = new DaoJpa<>();
+    private DaoDocumentos daoMongo = new DaoDocumentos();
     private DaoGrafo daoGrafo = new DaoGrafo();
 
     public boolean salvarProduto(Produto produto) {
-        return daoProduto.salvar(produto);
+        return daoJpa.salvar(produto);
     }
 
     public List<Produto> listarProdutos() {
-        return daoProduto.consultaLista("produtos.todos", null);
+        return daoJpa.consultaLista("produtos.todos", null);
     }
 
     public Produto buscarProduto(long id) {
-        return daoProduto.buscar(id, Produto.class);
+        return daoJpa.buscar(id, Produto.class);
     }
 
     public boolean salvarCarrinhoDeCompras(Carrinho carrinhoDeCompras) {
@@ -46,6 +46,8 @@ public class LojaService {
         Jedis jedis = new Jedis("localhost", 6379);
         jedis.setex("carrinho", 43200, aux);
         jedis.close();
+        
+//        daoMongo.salvarCarrinho(carrinhoDeCompras);
         return true;
     }
 
@@ -56,6 +58,7 @@ public class LojaService {
         Carrinho carrinho = gson.fromJson(aux, Carrinho.class);
         jedis.close();
         return carrinho;
+//        return daoMongo.buscarCarrinho();
     }
 
     public Carrinho removerProdutoCarrinho(Carrinho carrinhoDeCompras, Produto produto) {
@@ -91,7 +94,7 @@ public class LojaService {
 
     public void salvarCompra(Compra compra) {
         daoGrafo.salvarRelacionamentos(compra);
-        daoCompra.salvarCompra(compra);
+        daoMongo.salvarCompra(compra);
     }
 
 //    public List<Produto> buscarProdutosSugeridos(Produto produto) {

@@ -54,7 +54,7 @@ and open the template in the editor.
                             </td>
                             <td>
                                 <div>
-                                    <form action="">
+                                    <form action="AlterarQtdeProduto">
                                         <input  type="number" min="0" max="10" name="quantidade" value="${produto.qtdeVenda}">
                                         <button type="submit"> <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
                                     </form>

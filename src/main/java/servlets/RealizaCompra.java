@@ -60,7 +60,7 @@ public class RealizaCompra extends HttpServlet {
                 pagamento.setCodSeguranca(request.getParameter("codigo"));
                 compra.setPagamento(pagamento);
                 lojaService.salvarCompra(compra);
-                lojaService.limparCarrinho(carrinho);
+//                lojaService.limparCarrinho(carrinho);
                 request.getSession().removeAttribute("carrinho");
                 response.sendRedirect("");
             }

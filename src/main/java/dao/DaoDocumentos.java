@@ -9,6 +9,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import entidades.Carrinho;
 import entidades.Compra;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,4 +44,25 @@ public class DaoDocumentos {
         return compras;
     }
     
+//    public boolean salvarCarrinho(Carrinho carrinhoDeCompras){
+//        MongoClient client = new MongoClient("localhost", 27017);
+//        MongoDatabase dataBase = client.getDatabase("bdnc-loja");
+//        MongoCollection<Document> collection = dataBase.getCollection("carrinho");
+//        collection.insertOne(carrinhoDeCompras.toDocument());
+//        client.close();
+//        return true;
+//    }
+//    
+//    public Carrinho buscarCarrinho() {
+//        MongoClient client = new MongoClient("localhost", 27017);
+//        MongoDatabase dataBase = client.getDatabase("bdnc-loja");
+//        MongoCollection<Document> collection = dataBase.getCollection("carrinho");
+//        MongoCursor<Document> cursor = collection.find().iterator();
+//        Carrinho carrinhoDeCompras = new Carrinho();
+//        while (cursor.hasNext()) {
+//            carrinhoDeCompras = carrinhoDeCompras.convertFromDocument(cursor.next());
+//        }
+//        client.close();
+//        return carrinhoDeCompras;
+//    }
 }

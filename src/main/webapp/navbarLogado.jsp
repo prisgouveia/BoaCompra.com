@@ -21,7 +21,7 @@
                 <li><a class="opcao" href="index.jsp">Home</a></li>
                 <li><a class="opcao" href="cadastroProduto.html">Cadastrar Produto</a></li>
                 <li><a href="carrinho.jsp">
-                        <img src="resources/img/shopping-cart.png" height="25" width="25">(${carrinho.qtdeItens})
+                        <img src="resources/img/shopping-cart.png" height="25" width="25"><span class="badge">(${carrinho.qtdeItens})</span>
                     </a>
                 </li>
                 <li><a class="opcao" href="Logout">Sair</a></li>
